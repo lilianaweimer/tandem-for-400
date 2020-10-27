@@ -3,7 +3,7 @@ import './App.scss';
 
 import data from '../../Data/Apprentice_TandemFor400_Data.json';
 
-function App() {
+const App = () => {
 
   const [gameData, updateGameData] = useState({});
 
