@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Game.scss';
 
-const Game = () => {
+const Game = ({ gameData }) => {
+
+  // const [currentQuestion, updateCurrentQuestion] = useState('please');
+
   return (
-    <p>Game</p>
+    <section>
+      <p></p>
+    </section>
   )
 }
 
