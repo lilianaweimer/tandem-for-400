@@ -6,14 +6,15 @@ import Home from '../Home/Home';
 import Game from '../Game/Game';
 import GameOver from '../GameOver/GameOver';
 
-import data from '../../Data/Apprentice_TandemFor400_Data.json';
+import { getQuestions } from '../../Data/apiCalls';
 
 const App = () => {
 
   const [gameData, updateGameData] = useState({});
 
   useEffect(() => {
-    updateGameData(data);
+    getQuestions()
+      .then(data => updateGameData(data))
   }, [])
 
   const shuffle = (array) => {
