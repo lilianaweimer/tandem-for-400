@@ -40,7 +40,7 @@ const Game = ({ gameData, shuffle }) => {
   const nextQuestion = () => {
     incrementQIndex(currentIndex + 1);
     changeDisplay('play');
-  }
+  };
 
   const displayGame = () => {
     switch (display) {
@@ -70,7 +70,7 @@ const Game = ({ gameData, shuffle }) => {
       default:
         break;
     }
-  }
+  };
 
   return gameData ? displayGame() : <Redirect to='/'/>;
 }

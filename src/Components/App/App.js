@@ -11,7 +11,6 @@ import data from '../../Data/Apprentice_TandemFor400_Data.json';
 const App = () => {
 
   const [gameData, updateGameData] = useState({});
-  // console.log(gameData)
 
   useEffect(() => {
     updateGameData(data);
