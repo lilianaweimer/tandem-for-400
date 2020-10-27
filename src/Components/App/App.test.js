@@ -4,7 +4,6 @@ import App from './App';
 
 import { MemoryRouter } from 'react-router-dom';
 import { act } from 'react-dom/test-utils';
-import { fireEvent, getByText, render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { getQuestions } from '../../Data/apiCalls';
