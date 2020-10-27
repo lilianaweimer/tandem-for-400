@@ -11,11 +11,10 @@ import data from '../../Data/Apprentice_TandemFor400_Data.json';
 const App = () => {
 
   const [gameData, updateGameData] = useState({});
-  const [currentQuestion, updateCurrentQuestion] = useState(gameData ? gameData[0] : {});
+  // console.log(gameData)
 
   useEffect(() => {
     updateGameData(data);
-    shuffle(gameData);
   }, [])
 
   const shuffle = (array) => {
@@ -45,7 +44,14 @@ const App = () => {
   return (
     <div className='App'>
       <Switch>
-        <Route path='/play' render={() => <Game currentQuestion={currentQuestion} />}/>
+        <Route 
+          path='/play' 
+          render={() => 
+            <Game 
+              gameData={shuffle(gameData)}
+              shuffle={shuffle}
+          />}
+        />
         <Route path='/gameover' render={() => <GameOver />}/>
         <Route exact path='/' render={() => <Home />}/>
       </Switch>
