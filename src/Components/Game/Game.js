@@ -82,7 +82,7 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
     }
   };
 
-  return gameData ?
+  return gameData.length ?
     <section>
       <p className='current-score'>Your current score: {score} points</p>
       {displayGame()}
