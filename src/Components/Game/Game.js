@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router';
+import React, { useState } from 'react';
+import { Redirect, Link } from 'react-router-dom';
 import './Game.scss';
 
 const Game = ({ gameData, shuffle, updateScore, score }) => {
@@ -41,7 +41,6 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
   };
 
   const nextQuestion = () => {
-    console.log('next is happening')
     incrementQIndex(currentIndex + 1);
     changeDisplay('play');
   };
@@ -59,7 +58,11 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
         return (
           <section>
             <h3>Correct!</h3>
-            <button onClick={() => nextQuestion()}>Next Question</button>
+            {
+              currentIndex === gameData.length - 1 ? 
+              <Link to='/gameover'>Game Over!</Link> : 
+              <button onClick={() => nextQuestion()}>Next Question</button>
+            }
           </section>
         )
       case 'incorrect':
@@ -67,7 +70,11 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
           <section>
             <h3>Incorrect!</h3>
             <p>The correct answer was: {question.correct}</p>
-            <button onClick={() => nextQuestion()}>Next Question</button>
+            {
+              currentIndex === gameData.length - 1 ? 
+              <Link to='/gameover'>Game Over!</Link> : 
+              <button onClick={() => nextQuestion()}>Next Question</button>
+            }
           </section>
         )
       default:
