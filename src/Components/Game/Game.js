@@ -55,16 +55,15 @@ const Game = ({ gameData, shuffle }) => {
       case 'correct':
         return (
           <section>
-            <p>Correct!</p>
+            <h3>Correct!</h3>
             <button onClick={() => nextQuestion()}>Next Question</button>
           </section>
         )
       case 'incorrect':
         return (
           <section>
-            <p>Inorrect!</p>
-            <p>The correct answer was:</p>
-            <p>{question.correct}</p>
+            <h3>Incorrect!</h3>
+            <p>The correct answer was: {question.correct}</p>
             <button onClick={() => nextQuestion()}>Next Question</button>
           </section>
         )
