@@ -60,7 +60,7 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
             <h3>Correct!</h3>
             {
               currentIndex === gameData.length - 1 ? 
-              <Link to='/gameover'>Game Over!</Link> : 
+              <Link to='/gameover' className='game-over-button'>Game Over!</Link> : 
               <button className='next-question' onClick={() => nextQuestion()}>Next Question</button>
             }
           </section>
@@ -72,7 +72,7 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
             <p className='correct-answer'>The correct answer was: {question.correct}</p>
             {
               currentIndex === gameData.length - 1 ? 
-              <Link to='/gameover'>Game Over!</Link> : 
+              <Link to='/gameover' className='game-over-button'>Game Over!</Link> : 
               <button className='next-question' onClick={() => nextQuestion()}>Next Question</button>
             }
           </section>
