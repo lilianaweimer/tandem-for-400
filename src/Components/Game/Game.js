@@ -22,7 +22,8 @@ const Game = ({ gameData, shuffle }) => {
           key={shuffled.indexOf(answer)}
           className='answer-button'
           value={answer}
-          onClick={(e) => checkAnswer(e.target.value)}>
+          onClick={(e) => checkAnswer(e.target.value)}
+          data-testid={answer}>
             {answer}
         </button>
       )
