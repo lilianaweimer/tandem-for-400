@@ -65,7 +65,7 @@ describe('Game', () => {
       ReactDOM.render(
         <MemoryRouter>
           <Game 
-            gameData={null} 
+            gameData={[]} 
             shuffle={jest.fn()} 
             updateScore={jest.fn()}
             score={0}
