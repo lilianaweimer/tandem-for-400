@@ -30,4 +30,20 @@ describe('GameOver', () => {
     expect(container.querySelector('a').textContent).toBe('Play Again');
   });
 
+  it('should fire a function when play again is clicked', async () => {
+    const mockReset = jest.fn();
+    await act(async () => {
+      ReactDOM.render(<MemoryRouter><GameOver score={10} resetGame={mockReset}/></MemoryRouter>, container)
+    });
+
+    const playAgain = document.querySelector('a');
+    expect(playAgain.textContent).toBe('Play Again');
+  
+    act(() => {
+      playAgain.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(mockReset).toBeCalledTimes(1);
+  });
+
 });
