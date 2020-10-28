@@ -6,7 +6,7 @@ const Game = ({ gameData, shuffle }) => {
 
   const [currentIndex, incrementQIndex] = useState(0);
   const [display, changeDisplay] = useState('play');
-  const question = gameData[currentIndex]
+  const question = gameData && gameData[currentIndex];
 
   const shuffleAnswers = () => {
     let allAnswers = [question.incorrect, question.correct].flat();

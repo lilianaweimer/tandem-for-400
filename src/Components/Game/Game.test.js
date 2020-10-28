@@ -38,6 +38,17 @@ describe('Game', () => {
     expect(container.querySelector('[data-testid=Devmynd]').textContent).toBe('Devmynd');
   });
 
+  it('should not render if not passed game data', async () => {
+    await act(async () => {
+      ReactDOM.render(<MemoryRouter><Game gameData={null} shuffle={jest.fn()}/></MemoryRouter>, container)
+    });
+
+    expect(document.querySelector('h3')).toBe(null);
+    expect(document.querySelector('p')).toBe(null);
+
+    // not completely sure this test is working as I want it to. I will come back to this, time permitting
+  });
+
   it('should display correct if correct answer is clicked', async () => {
     await act(async () => {
       ReactDOM.render(<MemoryRouter><Game gameData={mockGameData} shuffle={jest.fn()}/></MemoryRouter>, container)
