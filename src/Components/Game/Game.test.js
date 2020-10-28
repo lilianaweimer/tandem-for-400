@@ -195,4 +195,36 @@ describe('Game', () => {
     expect(document.querySelector('.question').textContent).toBe('In Shakespeare\'s play Julius Caesar, Caesar\'s last words were...');
   });
 
+  it('should fire the update score method when next question is clicked', async () => {
+    const mockScoreUpdate = jest.fn();
+    await act(async () => {
+      ReactDOM.render(
+        <MemoryRouter>
+          <Game 
+            gameData={mockGameDataTwo} 
+            shuffle={jest.fn()} 
+            updateScore={mockScoreUpdate}
+            score={0}
+          />
+        </MemoryRouter>, 
+      container)
+    });
+
+    const correct = document.querySelector('[data-testid=Devmynd]');
+    expect(correct.textContent).toBe('Devmynd');
+  
+    act(() => {
+      correct.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });  
+
+    const nextQuestion = document.querySelector('.next-question');
+    expect(nextQuestion.textContent).toBe('Next Question');
+
+    act(() => {
+      nextQuestion.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(mockScoreUpdate).toBeCalledTimes(1);
+  });
+
 });
