@@ -43,28 +43,55 @@ describe('Game', () => {
 
   it('should render correctly', async () => {
     await act(async () => {
-      ReactDOM.render(<MemoryRouter><Game gameData={mockGameData} shuffle={jest.fn()}/></MemoryRouter>, container)
+      ReactDOM.render(
+        <MemoryRouter>
+          <Game 
+            gameData={mockGameData} 
+            shuffle={jest.fn()} 
+            updateScore={jest.fn()}
+            score={0}
+          />
+        </MemoryRouter>, 
+      container)
     });
 
-    expect(container.querySelector('p').textContent).toBe('What was Tandem previous name?');
+    expect(container.querySelector('.question').textContent).toBe('What was Tandem previous name?');
     expect(container.querySelector('[data-testid=Tandem]').textContent).toBe('Tandem');
     expect(container.querySelector('[data-testid=Devmynd]').textContent).toBe('Devmynd');
   });
 
   it('should not render if not passed game data', async () => {
     await act(async () => {
-      ReactDOM.render(<MemoryRouter><Game gameData={null} shuffle={jest.fn()}/></MemoryRouter>, container)
+      ReactDOM.render(
+        <MemoryRouter>
+          <Game 
+            gameData={null} 
+            shuffle={jest.fn()} 
+            updateScore={jest.fn()}
+            score={0}
+          />
+        </MemoryRouter>, 
+      container)
     });
 
     expect(document.querySelector('h3')).toBe(null);
-    expect(document.querySelector('p')).toBe(null);
+    expect(document.querySelector('.question')).toBe(null);
 
     // not completely sure this test is working as I want it to. I will come back to this, time permitting
   });
 
   it('should display correct if correct answer is clicked', async () => {
     await act(async () => {
-      ReactDOM.render(<MemoryRouter><Game gameData={mockGameData} shuffle={jest.fn()}/></MemoryRouter>, container)
+      ReactDOM.render(
+        <MemoryRouter>
+          <Game 
+            gameData={mockGameData} 
+            shuffle={jest.fn()} 
+            updateScore={jest.fn()}
+            score={0}
+          />
+        </MemoryRouter>, 
+      container)
     });
 
     const correct = document.querySelector('[data-testid=Devmynd]');
@@ -79,7 +106,16 @@ describe('Game', () => {
 
   it('should display incorrect and correct answer if incorrect answer is clicked', async () => {
     await act(async () => {
-      ReactDOM.render(<MemoryRouter><Game gameData={mockGameData} shuffle={jest.fn()}/></MemoryRouter>, container)
+      ReactDOM.render(
+        <MemoryRouter>
+          <Game 
+            gameData={mockGameData} 
+            shuffle={jest.fn()} 
+            updateScore={jest.fn()}
+            score={0}
+          />
+        </MemoryRouter>, 
+      container)
     });
 
     const incorrect = document.querySelector('[data-testid=Tandem]');
@@ -90,12 +126,21 @@ describe('Game', () => {
     });  
     
     expect(container.querySelector('h3').textContent).toBe('Incorrect!');
-    expect(container.querySelector('p').textContent).toBe('The correct answer was: Devmynd');
+    expect(container.querySelector('.correct-answer').textContent).toBe('The correct answer was: Devmynd');
   });
 
   it('should go to another question from correct', async () => {
     await act(async () => {
-      ReactDOM.render(<MemoryRouter><Game gameData={mockGameDataTwo} shuffle={jest.fn()}/></MemoryRouter>, container)
+      ReactDOM.render(
+        <MemoryRouter>
+          <Game 
+            gameData={mockGameDataTwo} 
+            shuffle={jest.fn()} 
+            updateScore={jest.fn()}
+            score={0}
+          />
+        </MemoryRouter>, 
+      container)
     });
 
     const correct = document.querySelector('[data-testid=Devmynd]');
@@ -107,19 +152,28 @@ describe('Game', () => {
     
     expect(container.querySelector('h3').textContent).toBe('Correct!');
 
-    const nextQuestion = document.querySelector('button');
+    const nextQuestion = document.querySelector('.next-question');
     expect(nextQuestion.textContent).toBe('Next Question');
 
     act(() => {
       nextQuestion.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
 
-    expect(document.querySelector('p').textContent).toBe('In Shakespeare\'s play Julius Caesar, Caesar\'s last words were...');
+    expect(document.querySelector('.question').textContent).toBe('In Shakespeare\'s play Julius Caesar, Caesar\'s last words were...');
   });
 
   it('should go to another question from incorrect', async () => {
     await act(async () => {
-      ReactDOM.render(<MemoryRouter><Game gameData={mockGameDataTwo} shuffle={jest.fn()}/></MemoryRouter>, container)
+      ReactDOM.render(
+        <MemoryRouter>
+          <Game 
+            gameData={mockGameDataTwo} 
+            shuffle={jest.fn()} 
+            updateScore={jest.fn()}
+            score={0}
+          />
+        </MemoryRouter>, 
+      container)
     });
 
     const incorrect = document.querySelector('[data-testid=Tandem]');
@@ -131,14 +185,14 @@ describe('Game', () => {
     
     expect(container.querySelector('h3').textContent).toBe('Incorrect!');
 
-    const nextQuestion = document.querySelector('button');
+    const nextQuestion = document.querySelector('.next-question');
     expect(nextQuestion.textContent).toBe('Next Question');
 
     act(() => {
       nextQuestion.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
 
-    expect(document.querySelector('p').textContent).toBe('In Shakespeare\'s play Julius Caesar, Caesar\'s last words were...');
+    expect(document.querySelector('.question').textContent).toBe('In Shakespeare\'s play Julius Caesar, Caesar\'s last words were...');
   });
 
 });

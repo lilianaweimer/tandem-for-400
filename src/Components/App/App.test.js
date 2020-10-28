@@ -55,7 +55,7 @@ describe('App', () => {
       link.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
   
-    expect(container.querySelector('p').textContent).toBe('What was Tandem previous name?');
+    expect(container.querySelector('.question').textContent).toBe('What was Tandem previous name?');
   });
 
 })

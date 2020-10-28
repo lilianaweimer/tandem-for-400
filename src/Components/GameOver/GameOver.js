@@ -7,7 +7,7 @@ const GameOver = ({ score, resetGame }) => {
     <section>
       <h2>Game Over!</h2>
       <p>Your final score was {score} points.</p>
-      <Link to='/play' onClick={() => resetGame()}>Play Again?</Link>
+      <Link to='/play' onClick={() => resetGame()}>Play Again</Link>
     </section>
   )
 }

@@ -50,7 +50,7 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
       case 'play':
         return (
           <section>
-            <p>{question.question}</p>
+            <p className='question'>{question.question}</p>
             {displayAnswers()}
           </section>
         )
@@ -61,7 +61,7 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
             {
               currentIndex === gameData.length - 1 ? 
               <Link to='/gameover'>Game Over!</Link> : 
-              <button onClick={() => nextQuestion()}>Next Question</button>
+              <button className='next-question' onClick={() => nextQuestion()}>Next Question</button>
             }
           </section>
         )
@@ -69,11 +69,11 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
         return (
           <section>
             <h3>Incorrect!</h3>
-            <p>The correct answer was: {question.correct}</p>
+            <p className='correct-answer'>The correct answer was: {question.correct}</p>
             {
               currentIndex === gameData.length - 1 ? 
               <Link to='/gameover'>Game Over!</Link> : 
-              <button onClick={() => nextQuestion()}>Next Question</button>
+              <button className='next-question' onClick={() => nextQuestion()}>Next Question</button>
             }
           </section>
         )
