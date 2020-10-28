@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router';
 import './Game.scss';
 
-const Game = ({ gameData, shuffle }) => {
+const Game = ({ gameData, shuffle, updateScore, score }) => {
 
   const [currentIndex, incrementQIndex] = useState(0);
   const [display, changeDisplay] = useState('play');
-  const question = gameData && gameData[currentIndex];
+  const question = gameData ? gameData[currentIndex] : null;
 
   const shuffleAnswers = () => {
     let allAnswers = [question.incorrect, question.correct].flat();
@@ -33,12 +33,15 @@ const Game = ({ gameData, shuffle }) => {
   const checkAnswer = (e) => {
     if (e === question.correct) {
       changeDisplay('correct');
+      updateScore(score + 1);
     } else {
       changeDisplay('incorrect');
+      updateScore(score - 1);
     }
   };
 
   const nextQuestion = () => {
+    console.log('next is happening')
     incrementQIndex(currentIndex + 1);
     changeDisplay('play');
   };
@@ -72,7 +75,12 @@ const Game = ({ gameData, shuffle }) => {
     }
   };
 
-  return gameData ? displayGame() : <Redirect to='/'/>;
+  return gameData ?
+    <section>
+      <p>Your current score: {score}</p>
+      {displayGame()}
+    </section> : 
+    <Redirect to='/'/>;
 }
 
 export default Game;

@@ -11,6 +11,7 @@ import { getQuestions } from '../../Data/apiCalls';
 const App = () => {
 
   const [gameData, updateGameData] = useState({});
+  const [score, updateScore] = useState(0);
 
   useEffect(() => {
     getQuestions()
@@ -48,11 +49,19 @@ const App = () => {
           path='/play' 
           render={() => 
             <Game 
-              gameData={shuffle(gameData)}
+              gameData={gameData}
               shuffle={shuffle}
+              updateScore={updateScore}
+              score={score}
           />}
         />
-        <Route path='/gameover' render={() => <GameOver />}/>
+        <Route 
+          path='/gameover' 
+          render={() => 
+            <GameOver 
+              score={score}
+            />}
+        />
         <Route exact path='/' render={() => <Home />}/>
       </Switch>
     </div>
