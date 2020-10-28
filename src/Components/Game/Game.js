@@ -84,7 +84,7 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
 
   return gameData ?
     <section>
-      <p>Your current score: {score}</p>
+      <p>Your current score: {score} points</p>
       {displayGame()}
     </section> : 
     <Redirect to='/'/>;

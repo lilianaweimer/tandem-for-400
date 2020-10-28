@@ -1,9 +1,12 @@
 import React from 'react';
 import './GameOver.scss';
 
-const GameOver = () => {
+const GameOver = ({ score }) => {
   return (
-    <p>GameOver</p>
+    <section>
+      <h2>Game Over!</h2>
+      <p>Your final score was {score} points.</p>
+    </section>
   )
 }
 
