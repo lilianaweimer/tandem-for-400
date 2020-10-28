@@ -26,6 +26,19 @@ describe('Game', () => {
       "incorrect": ["Tandem", "Burger Shack", "Extraordinary Humans"],
       "correct": "Devmynd"
     },
+  ];
+
+  const mockGameDataTwo = [
+    {
+      "question": "What was Tandem previous name?",
+      "incorrect": ["Tandem", "Burger Shack", "Extraordinary Humans"],
+      "correct": "Devmynd"
+    },
+    {
+      "question": "In Shakespeare's play Julius Caesar, Caesar's last words were...",
+      "incorrect": ["Iacta alea est!", "Vidi, vini, vici", "Aegri somnia vana"],
+      "correct": "Et tu, Brute?"
+    }
   ]
 
   it('should render correctly', async () => {
@@ -78,6 +91,54 @@ describe('Game', () => {
     
     expect(container.querySelector('h3').textContent).toBe('Incorrect!');
     expect(container.querySelector('p').textContent).toBe('The correct answer was: Devmynd');
+  });
+
+  it('should go to another question from correct', async () => {
+    await act(async () => {
+      ReactDOM.render(<MemoryRouter><Game gameData={mockGameDataTwo} shuffle={jest.fn()}/></MemoryRouter>, container)
+    });
+
+    const correct = document.querySelector('[data-testid=Devmynd]');
+    expect(correct.textContent).toBe('Devmynd');
+  
+    act(() => {
+      correct.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });  
+    
+    expect(container.querySelector('h3').textContent).toBe('Correct!');
+
+    const nextQuestion = document.querySelector('button');
+    expect(nextQuestion.textContent).toBe('Next Question');
+
+    act(() => {
+      nextQuestion.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(document.querySelector('p').textContent).toBe('In Shakespeare\'s play Julius Caesar, Caesar\'s last words were...');
+  });
+
+  it('should go to another question from incorrect', async () => {
+    await act(async () => {
+      ReactDOM.render(<MemoryRouter><Game gameData={mockGameDataTwo} shuffle={jest.fn()}/></MemoryRouter>, container)
+    });
+
+    const incorrect = document.querySelector('[data-testid=Tandem]');
+    expect(incorrect.textContent).toBe('Tandem');
+  
+    act(() => {
+      incorrect.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });  
+    
+    expect(container.querySelector('h3').textContent).toBe('Incorrect!');
+
+    const nextQuestion = document.querySelector('button');
+    expect(nextQuestion.textContent).toBe('Next Question');
+
+    act(() => {
+      nextQuestion.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(document.querySelector('p').textContent).toBe('In Shakespeare\'s play Julius Caesar, Caesar\'s last words were...');
   });
 
 });
