@@ -1,0 +1,22 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/mixins.scss';
+
+.home-container {
+ @include basicContainer;
+}
+
+.home-header {
+  font-family: $monospace;
+  font-size: 40px;
+}
+
+.home-info {
+  font-family: $monospace;
+  color: $grey;
+}
+
+.lightbulb-img {
+  height: 50px;
+  width: auto;
+  margin-top: 5%;
+}

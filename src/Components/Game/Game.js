@@ -51,13 +51,15 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
         return (
           <section>
             <p className='question'>{question.question}</p>
-            {displayAnswers()}
+            <div className='answers-container'>
+              {displayAnswers()}
+            </div>
           </section>
         )
       case 'correct':
         return (
-          <section>
-            <h3>Correct!</h3>
+          <section className='answered-question-container'>
+            <h3 className='question center'>Correct!</h3>
             {
               currentIndex === gameData.length - 1 ? 
               <Link to='/gameover' className='game-over-button'>Game Over!</Link> : 
@@ -67,8 +69,8 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
         )
       case 'incorrect':
         return (
-          <section>
-            <h3>Incorrect!</h3>
+          <section className='answered-question-container'>
+            <h3 className='question center'>Incorrect!</h3>
             <p className='correct-answer'>The correct answer was: {question.correct}</p>
             {
               currentIndex === gameData.length - 1 ? 
@@ -83,10 +85,12 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
   };
 
   return gameData.length ?
-    <section>
+    <div className='outer-game-container'>
       <p className='current-score'>Your current score: {score} points</p>
-      {displayGame()}
-    </section> : 
+      <section className='game-container'>
+        {displayGame()}
+      </section>
+    </div> : 
     <Redirect to='/'/>;
 }
 
