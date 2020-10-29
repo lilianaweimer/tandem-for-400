@@ -11,11 +11,12 @@ import { getQuestions } from '../../Data/apiCalls';
 const App = () => {
 
   const [gameData, updateGameData] = useState({});
+  const [score, updateScore] = useState(0);
 
   useEffect(() => {
     getQuestions()
-      .then(data => updateGameData(data))
-  }, [])
+      .then(data => updateGameData(data));
+  }, []);
 
   const shuffle = (array) => {
     // this is FISHER-YATES SHUFFLE - explanation comments so I don't forget how it works
@@ -39,6 +40,12 @@ const App = () => {
       array[randomIndex] = temporaryValue;
     }
     return array;
+  };
+
+  const resetGame = () => {
+    updateScore(0);
+    getQuestions()
+    .then(data => updateGameData(data));
   }
 
   return (
@@ -48,11 +55,20 @@ const App = () => {
           path='/play' 
           render={() => 
             <Game 
-              gameData={shuffle(gameData)}
+              gameData={gameData}
               shuffle={shuffle}
+              updateScore={updateScore}
+              score={score}
           />}
         />
-        <Route path='/gameover' render={() => <GameOver />}/>
+        <Route 
+          path='/gameover' 
+          render={() => 
+            <GameOver 
+              score={score}
+              resetGame={resetGame}
+            />}
+        />
         <Route exact path='/' render={() => <Home />}/>
       </Switch>
     </div>

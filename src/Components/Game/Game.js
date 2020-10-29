@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router';
+import { Redirect, Link } from 'react-router-dom';
 import './Game.scss';
 
-const Game = ({ gameData, shuffle }) => {
+const Game = ({ gameData, shuffle, updateScore, score }) => {
 
   const [currentIndex, incrementQIndex] = useState(0);
   const [display, changeDisplay] = useState('play');
-  const question = gameData[currentIndex]
+  const question = gameData ? gameData[currentIndex] : null;
 
   const shuffleAnswers = () => {
     let allAnswers = [question.incorrect, question.correct].flat();
@@ -22,7 +22,8 @@ const Game = ({ gameData, shuffle }) => {
           key={shuffled.indexOf(answer)}
           className='answer-button'
           value={answer}
-          onClick={(e) => checkAnswer(e.target.value)}>
+          onClick={(e) => checkAnswer(e.target.value)}
+          data-testid={answer}>
             {answer}
         </button>
       )
@@ -32,8 +33,10 @@ const Game = ({ gameData, shuffle }) => {
   const checkAnswer = (e) => {
     if (e === question.correct) {
       changeDisplay('correct');
+      updateScore(score + 1);
     } else {
       changeDisplay('incorrect');
+      updateScore(score - 1);
     }
   };
 
@@ -47,24 +50,31 @@ const Game = ({ gameData, shuffle }) => {
       case 'play':
         return (
           <section>
-            <p>{question.question}</p>
+            <p className='question'>{question.question}</p>
             {displayAnswers()}
           </section>
         )
       case 'correct':
         return (
           <section>
-            <p>Correct!</p>
-            <button onClick={() => nextQuestion()}>Next Question</button>
+            <h3>Correct!</h3>
+            {
+              currentIndex === gameData.length - 1 ? 
+              <Link to='/gameover' className='game-over-button'>Game Over!</Link> : 
+              <button className='next-question' onClick={() => nextQuestion()}>Next Question</button>
+            }
           </section>
         )
       case 'incorrect':
         return (
           <section>
-            <p>Inorrect!</p>
-            <p>The correct answer was:</p>
-            <p>{question.correct}</p>
-            <button onClick={() => nextQuestion()}>Next Question</button>
+            <h3>Incorrect!</h3>
+            <p className='correct-answer'>The correct answer was: {question.correct}</p>
+            {
+              currentIndex === gameData.length - 1 ? 
+              <Link to='/gameover' className='game-over-button'>Game Over!</Link> : 
+              <button className='next-question' onClick={() => nextQuestion()}>Next Question</button>
+            }
           </section>
         )
       default:
@@ -72,7 +82,12 @@ const Game = ({ gameData, shuffle }) => {
     }
   };
 
-  return gameData ? displayGame() : <Redirect to='/'/>;
+  return gameData.length ?
+    <section>
+      <p className='current-score'>Your current score: {score} points</p>
+      {displayGame()}
+    </section> : 
+    <Redirect to='/'/>;
 }
 
 export default Game;

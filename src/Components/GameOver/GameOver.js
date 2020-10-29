@@ -1,9 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './GameOver.scss';
 
-const GameOver = () => {
+const GameOver = ({ score, resetGame }) => {
   return (
-    <p>GameOver</p>
+    <section>
+      <h2>Game Over!</h2>
+      <p>Your final score was {score} points.</p>
+      <Link to='/play' onClick={() => resetGame()} className='new-game-button'>Play Again</Link>
+    </section>
   )
 }
 
