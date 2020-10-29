@@ -1,0 +1,61 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/_mixins.scss';
+
+.game-container {
+  @include basicContainer;
+  justify-content: space-around;
+  height: max-content;
+  margin-bottom: 10%;
+  padding: 1.5rem;
+}
+
+.answers-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+}
+
+.answer-button {
+  margin: 1rem;
+}
+
+.question {
+  font-family: $monospace;
+}
+
+.current-score {
+  padding: 1rem;
+  font-family: $monospace;
+  background-color: $salmon;
+  border: 1px solid black;
+  box-shadow: 5px 5px black;
+  margin-top: 0;
+  width: max-content;
+}
+
+.outer-game-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.correct-answer {
+  font-family: $sans;
+  margin-bottom: 2rem;
+}
+
+.answered-question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

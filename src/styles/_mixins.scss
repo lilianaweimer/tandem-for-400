@@ -1,0 +1,14 @@
+@import './variables';
+
+@mixin basicContainer() {
+  height: 50%;
+  width: 50%;
+  background-color: white;
+  align-self: center;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px black;
+}
