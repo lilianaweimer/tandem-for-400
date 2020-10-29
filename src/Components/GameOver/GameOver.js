@@ -4,9 +4,9 @@ import './GameOver.scss';
 
 const GameOver = ({ score, resetGame }) => {
   return (
-    <section>
-      <h2>Game Over!</h2>
-      <p>Your final score was {score} points.</p>
+    <section className='gameover-container'>
+      <h2 className='gameover-header'>Game Over!</h2>
+      <p className='gameover-score'>Your final score was {score} points.</p>
       <Link to='/play' onClick={() => resetGame()} className='new-game-button'>Play Again</Link>
     </section>
   )

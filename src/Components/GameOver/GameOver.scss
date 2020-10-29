@@ -1,0 +1,16 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/_mixins.scss';
+
+.gameover-container {
+  @include basicContainer;
+}
+
+.gameover-header {
+  font-family: $monospace;
+  font-size: 40px;
+}
+
+.gameover-score {
+  font-family: $sans;
+  color: $grey;
+}
