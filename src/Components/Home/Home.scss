@@ -1,0 +1,31 @@
+@import '../../styles/_variables.scss';
+
+.home-container {
+  height: 50%;
+  width: 50%;
+  background-color: white;
+  align-self: center;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px -5px black;
+}
+
+.home-header {
+  font-family: $monospace;
+  color: $salmon;
+  font-size: 40px;
+}
+
+.home-info {
+  font-family: $monospace;
+  color: $grey;
+}
+
+.lightbulb-img {
+  height: 50px;
+  width: auto;
+  margin-top: 5%;
+}
