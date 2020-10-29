@@ -55,7 +55,7 @@ describe('App', () => {
       ReactDOM.render(<MemoryRouter><App /></MemoryRouter>, container)
     });
 
-    expect(container.querySelector('h1').textContent).toBe('Tandem for 400');
+    expect(container.querySelector('h1').textContent).toBe('TANDEM FOR 400');
     expect(container.querySelector('p').textContent).toBe('Train your trivia knowledge!');
     expect(container.querySelector('[data-testid=play-button]').textContent).toBe('Play');
   });
