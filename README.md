@@ -31,7 +31,7 @@ Ending the game and starting a new round:
 
 Mobile Layout:
 <div width=60%>
-  <img src='src/images/mobile-start.png' alt='a gif of a player ending a game and starting a new round'/><img src='src/images/mobile-play.png' alt='a gif of a player ending a game and starting a new round'/><img src='src/images/mobile-end.png' alt='a gif of a player ending a game and starting a new round'/>
+  <img src='src/images/mobile-start.png' alt='a gif of a player ending a game and starting a new round' width=200px height=auto/><img src='src/images/mobile-play.png' alt='a gif of a player ending a game and starting a new round' width=200px height=auto/><img src='src/images/mobile-end.png' alt='a gif of a player ending a game and starting a new round' width=200px height=auto/>
 </div>
 
 <hr />
