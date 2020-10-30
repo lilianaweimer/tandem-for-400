@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lilianaweimer/tandem-for-400.svg?branch=master)](https://travis-ci.org/lilianaweimer/tandem-for-400)
+
 # Tandem for 400
 This is the code challenge for Tandem's Software Engineer Apprentice application.
 
