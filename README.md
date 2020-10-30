@@ -13,6 +13,8 @@ This is the code challenge for Tandem's Software Engineer Apprentice application
   - View at http://localhost:3000 in your browser
   - Type `^c + enter` (`control + c` -- on Mac) in your terminal to terminate local server when done
 
+## In action
+
 ## Goal
 The goal of the project per the challenge prompt, is:
 
