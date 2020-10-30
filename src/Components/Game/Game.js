@@ -49,7 +49,7 @@ const Game = ({ gameData, shuffle, updateScore, score }) => {
     switch (display) {
       case 'play':
         return (
-          <section>
+          <section className='inner-question-container'>
             <p className='question'>{question.question}</p>
             <div className='answers-container'>
               {displayAnswers()}

@@ -12,7 +12,8 @@ a, button, Link {
   box-shadow: 5px -5px black;
   margin: 5% 0;
   letter-spacing: 0.15rem;
-  width: max-content;
+  width: 100%;
+  cursor: pointer;
   &:hover {
     box-shadow: 8px -8px black;
   }
