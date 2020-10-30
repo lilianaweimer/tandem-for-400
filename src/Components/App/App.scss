@@ -1,13 +1,9 @@
 @import '../../styles/_variables.scss';
 
 .App {
-  // text-align: center;
-  // height: 99vh;
-  // width: 99vw;
   height: 95vh;
   width: 95vw;
   display: flex;
-  // flex-flow: column nowrap;
   justify-content: center;
   background-color: $darkgreen;
   border: 1px solid black;
