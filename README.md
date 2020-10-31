@@ -9,6 +9,7 @@ This is the code challenge for Tandem's Software Engineer Apprentice application
 
 ## To View
 - Deployed link: https://tandem-for-400.herokuapp.com/
+  - The deployed link can be slow to "wake up" and load
 - Local Setup:
   - Clone down the repository using `git clone git@github.com:lilianaweimer/tandem-for-400.git` in your terminal
   - Use `cd tandem-for-400` to move into the project directory
