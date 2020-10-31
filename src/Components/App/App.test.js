@@ -25,7 +25,7 @@ describe('App', () => {
 
   const mockQuestion = [
     {
-      "question": "What was Tandem previous name?",
+      "question": "What was Tandem's previous name?",
       "incorrect": ["Tandem", "Burger Shack", "Extraordinary Humans"],
       "correct": "Devmynd"
     },
@@ -73,7 +73,7 @@ describe('App', () => {
       link.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
   
-    expect(container.querySelector('.question').textContent).toBe('What was Tandem previous name?');
+    expect(container.querySelector('.question').textContent).toBe('What was Tandem\'s previous name?');
   });
 
   it('should be able to play a whole game without crashing', async () => {

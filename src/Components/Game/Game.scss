@@ -6,7 +6,7 @@
   justify-content: space-around;
   height: max-content;
   margin-bottom: 10%;
-  padding: 1.5rem;
+  
 }
 
 .answers-container {
@@ -23,6 +23,7 @@
 .question {
   font-family: $monospace;
   color: $grey;
+  width: 100%;
 }
 
 .current-score {
@@ -59,4 +60,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.inner-question-container {
+  width: 100%;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+
+  .game-container {
+    height: fit-content;
+  }
+
 }

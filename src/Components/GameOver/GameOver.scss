@@ -3,6 +3,8 @@
 
 .gameover-container {
   @include basicContainer;
+  text-align: center;
+  height: fit-content; 
 }
 
 .gameover-header {

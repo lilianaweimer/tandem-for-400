@@ -3,6 +3,8 @@
 
 .home-container {
  @include basicContainer;
+ height: max-content;
+ text-align: center;
 }
 
 .home-header {
